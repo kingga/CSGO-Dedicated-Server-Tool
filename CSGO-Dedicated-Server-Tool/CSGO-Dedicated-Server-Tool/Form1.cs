@@ -14,16 +14,18 @@ namespace CSGO_Dedicated_Server_Tool
 {
     public partial class Form1 : Form
     {
-        bool _isProcNotRunningAllowed = true;          // This is used to see if the program crashed or if it was shut down manually
+        bool _isProcNotRunningAllowed = true;           // This is used to see if the program crashed or if it was shut down manually
         Process _proc = null;                           // SRCDS Process
         List<string> _procArgs = new List<string>();    // SRCDS Arguments
-        string[] _defaultProcArgs = { "-tickrate 128", "-game csgo", "-console", "-usercon", "+net_port_trt 1", "+exec server.cfg" };
+        string[] _defaultProcArgs = { "-tickrate 128", "-game csgo", "-console", "-condebug", "-usercon", "+net_port_trt 1", "+exec server.cfg" };
 
         string _filename = "notepad.exe";
 
         // Directories
         string _SERVER_INSTALL_DIR = String.Format(@"C:\Steam\CSGO-Servers\");
         string _SERVER_LOG_DIR = String.Format(@"C:\Steam\CSGO-Servers\Logs\");
+        string _SERVER_CRASH_LOG_DIR = String.Format(@"C:\Steam\CSGO-Servers\Logs\CrashLogs\");
+        string _SERVER_SAVED_LOG_DIR = String.Format(@"C:\Steam\CSGO-Servers\Logs\Saved\");
 
         public Form1()
         {
@@ -58,11 +60,15 @@ namespace CSGO_Dedicated_Server_Tool
                     _proc = new Process();
                     _proc.StartInfo.WorkingDirectory = _batchDir;
                     _proc.StartInfo.FileName = _serverName /*+ "_server.exe"*/;
-                    //_proc.StartInfo.Arguments = _procArgsStr;
+                    _proc.StartInfo.Arguments = _procArgsStr;
                     _proc.StartInfo.CreateNoWindow = false;
                     _proc.Start();
 
-                    _isProcNotRunningAllowed = true; // If the process crashes it will be restarted
+                    _isProcNotRunningAllowed = false; // If the process crashes it will be restarted
+
+                    // Enable buttons
+                    btnStopServer.Enabled = true;
+                    btnRestartServer.Enabled = true;
                 }
                 else
                 {
@@ -76,11 +82,12 @@ namespace CSGO_Dedicated_Server_Tool
             }
         }
 
-        private void TerminateServer(string _serverName)
+        private void TerminateServer()
         {
             // Copy log to 'Logs' directory with a unique name (date/time)
-            string sourceFile = Path.Combine(_SERVER_INSTALL_DIR, "console.log");
-            string destFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + ".log");
+            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR, "console.log");
+            string _destFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
+            string _destChatFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
 
             try
             {
@@ -91,7 +98,25 @@ namespace CSGO_Dedicated_Server_Tool
                 }
 
                 // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
-                File.Copy(sourceFile, destFile, true);
+                File.Copy(_sourceFile, _destFile, true);
+
+                // Write the chat log
+                // Read from console.log
+                string[] _lines = File.ReadAllLines(_sourceFile);
+
+                // Write each line that has " : " to a chat log
+                using (StreamWriter _sw = new StreamWriter(_destChatFile))
+                {
+                    foreach (string _line in _lines)
+                    {
+                        if (_line.Contains(" : "))
+                        {
+                            _sw.WriteLine(_line);
+                        }
+                    }
+
+                    _sw.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -110,15 +135,25 @@ namespace CSGO_Dedicated_Server_Tool
             try
             {
                 // Terminate the process
-                _proc.CloseMainWindow();
+                _proc.Kill();
+                // USE _proc.CloseMainWindow() if the csgo server will close gracefully
                 _proc.Close(); // Free memory
+                _proc = null; // Null _proc so it can be restarted
 
-                
+                _isProcNotRunningAllowed = true;
+
+                // Disbale butons
+                btnStopServer.Enabled = false;
+                btnRestartServer.Enabled = false;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
                 MessageBox.Show("Exception Occurred: " + ex.Message, "Close Server Error!");
+
+                // Disable buttons
+                btnStopServer.Enabled = false;
+                btnRestartServer.Enabled = false;
             }
             
         }
@@ -126,11 +161,11 @@ namespace CSGO_Dedicated_Server_Tool
         private void RestartServer(string _serverName)
         {
             // Terminate Server
-            TerminateServer(_serverName);
+            TerminateServer();
 
             // Check if 'serverName' is closed
             // Start the server
-            if (_proc.HasExited && _proc != null)
+            if (_proc == null)
                 StartServer(_serverName, _procArgs);
         }
 
@@ -146,17 +181,17 @@ namespace CSGO_Dedicated_Server_Tool
             // TRUE
             // PROMT - "SERVER ALREADY RUNNING!\nWould you like to restart the server?", YES/NO
 
-            //if (_proc.HasExited)
+            if (_proc == null)
                 StartServer(_filename, _procArgs);
-            /*else
+            else
             {
                 DialogResult _dialogResult = MessageBox.Show("The server is already running!\nWould you like to restart the server?", "Start Server", MessageBoxButtons.YesNo);
 
                 if (_dialogResult == DialogResult.Yes)
-                    RestartServer("TEST");
+                    RestartServer(_filename);
                 else if (_dialogResult == DialogResult.No)
                     return; // Break from the function
-            }*/
+            }
         }
 
         private void btnStopServer_Click(object sender, EventArgs e)
@@ -170,7 +205,7 @@ namespace CSGO_Dedicated_Server_Tool
             // PROMT - "THE SERVER IS CURRENTLY NOT RUNNING!\nIf the server is running and this program fails to detect it please close the server manually.", OK
 
             if (!(_proc.HasExited) && _proc != null)
-                TerminateServer("TEST");
+                TerminateServer();
             else
                 MessageBox.Show("The server is currently not running!\nIf the server is running and this program fails to detect it please close the server manually.", "Close Server", MessageBoxButtons.OK);
         }
@@ -185,8 +220,8 @@ namespace CSGO_Dedicated_Server_Tool
             // FALSE
             // PROMT - "THE SERVER IS CURRENTLY NOT RUNNING!\nIf the server is running and this program fails to detect it please close the server manually.", OK
 
-            if (!(_proc.HasExited) && _isProcNotRunningAllowed == false && _proc != null)
-                RestartServer("TEST");
+            if (_proc != null)
+                RestartServer(_filename);
         }
 
         private void btnLaunchOptions_Click(object sender, EventArgs e)
@@ -198,16 +233,63 @@ namespace CSGO_Dedicated_Server_Tool
         private void btnLogConsole_Click(object sender, EventArgs e)
         {
             // Copy the current session log and paste it in the 'Logs\Saved' folder with a unique name (date/time)
+            // Copy log to 'Logs' directory with a unique name (date/time)
+            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR, "console.log");
+            string _destFile = Path.Combine(_SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
+            string _destChatFile = Path.Combine(_SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
+
+            try
+            {
+                // Check if the destination folder already exist else create it
+                if (!Directory.Exists(_SERVER_SAVED_LOG_DIR))
+                {
+                    Directory.CreateDirectory(_SERVER_SAVED_LOG_DIR);
+                }
+
+                // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
+                File.Copy(_sourceFile, _destFile, true);
+
+                // Write the chat log
+                // Read from console.log
+                string[] _lines = File.ReadAllLines(_sourceFile);
+
+                // Write each line that has " : " to a chat log
+                using (StreamWriter _sw = new StreamWriter(_destChatFile))
+                {
+                    foreach (string _line in _lines)
+                    {
+                        if (_line.Contains(" : "))
+                        {
+                            _sw.WriteLine(_line);
+                        }
+                    }
+
+                    _sw.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
+                MessageBox.Show("The log file has failed to copy!", "IO Error!");
+            }
         }
 
         private void btnViewConsoleLog_Click(object sender, EventArgs e)
         {
-
+            // VIEW CONSOLE LOG WILL SHOW THE LOG DIRECTORY
+            string _folder = _SERVER_LOG_DIR;
+            string _file = "*-console.log";
+            string _uri = "search:query=" + _file + "&crumb=location:" + _folder;
+            Process.Start(new ProcessStartInfo(_uri));
         }
 
         private void btnViewChatLog_Click(object sender, EventArgs e)
         {
-
+            // VIEW CHAT LOG WILL SHOW THE LOG DIRECTORY
+            string _folder = _SERVER_LOG_DIR;
+            string _file = "*-chat.log";
+            string _uri = "search:query=" + _file + "&crumb=location:" + _folder;
+            Process.Start(new ProcessStartInfo(_uri));
         }
 
         private void btnImportConfigFile_Click(object sender, EventArgs e)
@@ -243,13 +325,69 @@ namespace CSGO_Dedicated_Server_Tool
         // Used to check if the server crashed
         private void _refreshTimer_Tick(object sender, EventArgs e)
         {
+            // Start server on crash
             if (_isProcNotRunningAllowed == false)
             {
-                if ((_proc.HasExited))
+                if (_proc.HasExited)
                 {
+                    // Log crash and restart the server
+                    // Copy log to 'Logs' directory with a unique name (date/time)
+                    string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR, "console.log");
+                    string _destFolder = Path.Combine(_SERVER_CRASH_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss"));
+                    string _destFile = Path.Combine(_destFolder, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
+                    string _crashInfoFile = Path.Combine(_destFolder, "CrashInfo.txt");
+                    string _destChatFile = Path.Combine(_destFolder, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
+
+                    try
+                    {
+                        // Check if the destination folder already exist else create it
+                        if (!Directory.Exists(_SERVER_CRASH_LOG_DIR))
+                        {
+                            Directory.CreateDirectory(_SERVER_CRASH_LOG_DIR);
+                        }
+
+                        // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
+                        Directory.CreateDirectory(_destFolder);
+                        File.Copy(_sourceFile, _destFile, true);
+
+                        // Write the chat log
+                        // Read from console.log
+                        string[] _lines = File.ReadAllLines(_sourceFile);
+
+                        // Write each line that has " : " to a chat log
+                        using (StreamWriter _sw = new StreamWriter(_destChatFile))
+                        {
+                            foreach (string _line in _lines)
+                            {
+                                if (_line.Contains(" : "))
+                                {
+                                    _sw.WriteLine(_line);
+                                }
+                            }
+
+                            _sw.Close();
+                        }
+
+                        // Write crash information to a file
+                        using (StreamWriter _sr = new StreamWriter(_crashInfoFile))
+                        {
+                            _sr.WriteLine("CRASH DATE (yyyy-m-dd): " + DateTime.Now.ToString("yyyy-M-dd"));
+                            _sr.WriteLine("CRASH TIME (HH-mm-ss): " + DateTime.Now.ToString("HH-mm-ss"));
+                            _sr.WriteLine("LOG FILE: " + _destFile);
+                            _sr.WriteLine("CHAT FILE: " + _destChatFile);
+
+                            _sr.Close();
+                        }     
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
+                        MessageBox.Show("The log file has failed to copy!", "IO Error!");
+                    }
+
                     StartServer(_filename, _procArgs);
-                }
-            }     
+                }   
+            }  
         }
     }
 }

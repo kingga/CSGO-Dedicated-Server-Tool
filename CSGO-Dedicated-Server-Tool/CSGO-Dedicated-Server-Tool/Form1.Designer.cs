@@ -66,6 +66,7 @@
             // 
             // btnStopServer
             // 
+            this.btnStopServer.Enabled = false;
             this.btnStopServer.Location = new System.Drawing.Point(3, 32);
             this.btnStopServer.Name = "btnStopServer";
             this.btnStopServer.Size = new System.Drawing.Size(153, 23);
@@ -97,6 +98,7 @@
             // 
             // btnRestartServer
             // 
+            this.btnRestartServer.Enabled = false;
             this.btnRestartServer.Location = new System.Drawing.Point(4, 62);
             this.btnRestartServer.Name = "btnRestartServer";
             this.btnRestartServer.Size = new System.Drawing.Size(152, 23);
