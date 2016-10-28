@@ -1091,3 +1091,5 @@ C:\Users\Isaac\Source\Repos\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Too
 C:\Users\Isaac\Source\Repos\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\bin\Debug\downloads\cfg\sourcemod\sm_warmode_on.cfg
 C:\Users\Isaac\Source\Repos\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\bin\Debug\downloads\cfg\sourcemod\sourcemod.cfg
 C:\Users\Isaac\Source\Repos\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\obj\Debug\CSGO-Dedicated-Server-Tool.csprojResolveAssemblyReference.cache
+C:\Users\Isaac\Source\Repos\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\obj\Debug\CSGO_Dedicated_Server_Tool.Settings.resources
+C:\Users\Isaac\Source\Repos\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\CSGO-Dedicated-Server-Tool\bin\Debug\configs\config.cfg
