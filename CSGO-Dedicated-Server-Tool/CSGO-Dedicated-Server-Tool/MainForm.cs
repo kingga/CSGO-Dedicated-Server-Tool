@@ -22,13 +22,17 @@ namespace CSGO_Dedicated_Server_Tool
         string _filename = "srcds.exe";
 
         // Directories
-        public string _SERVER_INSTALL_DIR = String.Format(@"C:\steam\");
-        public string _SERVER_LOG_DIR = String.Format(@"C:\Steam\CSGO-Servers\Logs\");
-        public string _SERVER_CRASH_LOG_DIR = String.Format(@"C:\Steam\CSGO-Servers\Logs\CrashLogs\");
-        public string _SERVER_SAVED_LOG_DIR = String.Format(@"C:\Steam\CSGO-Servers\Logs\Saved\");
+        public string _SERVER_INSTALL_DIR = "";
+        public string _SERVER_LOG_DIR = "";
+        public string _SERVER_CRASH_LOG_DIR = "";
+        public string _SERVER_SAVED_LOG_DIR = "";
+
+        // Version
+        public string _APPLICATION_VERSION = "1.0";
 
         // Forms
         CommandLineArgs cmdLineForm;
+        Settings _settingsForm;
 
         public MainForm()
         {
@@ -37,6 +41,9 @@ namespace CSGO_Dedicated_Server_Tool
             _procArgs.AddRange(_defaultProcArgs);
 
             // Init Forms
+            _settingsForm = new Settings();
+            _settingsForm.ControlBox = false;
+
             cmdLineForm = new CommandLineArgs();
             cmdLineForm.ControlBox = false;
 
@@ -55,11 +62,35 @@ namespace CSGO_Dedicated_Server_Tool
             }
 
             _procArgs.AddRange(cmdLineForm.GetCommandLineArgs());
-        }
+
+            using (StreamReader _sr = new StreamReader(Directory.GetCurrentDirectory() + @"\configs\config.cfg"))
+            {
+                string _line;
+                string[] _lineTemp;
+
+                while ((_line = _sr.ReadLine()) != null)
+                {
+                    _lineTemp = _line.Split('=');
+
+                    
+
+                    if (_lineTemp[0] == "INSTALL_DIR")
+                        _SERVER_INSTALL_DIR = _lineTemp[1];
+                }
+            }
+
+            _SERVER_LOG_DIR = _SERVER_INSTALL_DIR + @"\Logs\";
+            _SERVER_CRASH_LOG_DIR = _SERVER_INSTALL_DIR + @"\Logs\CrashLogs\";Thi
+            _SERVER_SAVED_LOG_DIR = _SERVER_INSTALL_DIR + @"\Logs\Saved\";
+    }
 
         // serverName will be enough to link to the x_server.exe (srcds) file where x is the value of serverName
         private void StartServer(string _serverName, List<string> _procStartArgs)
         {
+            // Set the server install dir
+            if (_settingsForm._SERVER_INSTALL_DIR != "")
+                _SERVER_INSTALL_DIR = _settingsForm._SERVER_INSTALL_DIR;
+
             // Turn the _procStartArgs into a single string
             StringBuilder _strBuilder = new StringBuilder();
             string _procArgsStr = "";
@@ -113,7 +144,7 @@ namespace CSGO_Dedicated_Server_Tool
         private void TerminateServer()
         {
             // Copy log to 'Logs' directory with a unique name (date/time)
-            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"csgo\", "console.log");
+            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"\csgo\", "console.log");
             string _destFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
             string _destChatFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
 
@@ -285,7 +316,7 @@ namespace CSGO_Dedicated_Server_Tool
         {
             // Copy the current session log and paste it in the 'Logs\Saved' folder with a unique name (date/time)
             // Copy log to 'Logs' directory with a unique name (date/time)
-            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"csgo\", "console.log");
+            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"\csgo\", "console.log");
             string _destFile = Path.Combine(_SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
             string _destChatFile = Path.Combine(_SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
 
@@ -436,12 +467,12 @@ namespace CSGO_Dedicated_Server_Tool
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-
+            _settingsForm.Show();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Author: Isaac Skelton (/id/Kingga)\nDescription: A tool that helps with running a dedicated server.\nVersion: " + _APPLICATION_VERSION, "About", MessageBoxButtons.OK);
         }
 
         // Used to check if the server crashed
@@ -454,7 +485,7 @@ namespace CSGO_Dedicated_Server_Tool
                 {
                     // Log crash and restart the server
                     // Copy log to 'Logs' directory with a unique name (date/time)
-                    string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"csgo\", "console.log");
+                    string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"\csgo\", "console.log");
                     string _destFolder = Path.Combine(_SERVER_CRASH_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss"));
                     string _destFile = Path.Combine(_destFolder, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
                     string _crashInfoFile = Path.Combine(_destFolder, "CrashInfo.txt");
