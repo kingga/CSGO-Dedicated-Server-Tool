@@ -47,16 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="CommandLineArgs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CommandLineArgs.Designer.cs">
+      <DependentUpon>CommandLineArgs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="CommandLineArgs.resx">
+      <DependentUpon>CommandLineArgs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -67,6 +76,378 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="configs\config_args.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\metamod.vdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\metamod\metaplugins.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\metamod\sourcemod.vdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\admins.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\admins_simple.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\admin_groups.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\admin_levels.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\admin_overrides.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\core.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\databases.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\geoip\GeoIP.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\languages.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\maplists.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\sql-init-scripts\sqlite\admins-sqlite.sq3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\configs\sql-init-scripts\sqlite\clientprefs-sqlite.sq3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\admin-flatfile.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\adminhelp.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\adminmenu.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\antiflood.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\basebans.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\basechat.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\basecomm.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\basecommands.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\basetriggers.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\basevotes.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\clientprefs.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\admin-sql-prefetch.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\admin-sql-threaded.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\mapchooser.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\nominations.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\randomcycle.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\rockthevote.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\disabled\sql-admin-manager.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\funcommands.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\funvotes.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\nextmap.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\playercommands.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\reservedslots.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\plugins\sounds.smx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-flatfile\admin-flatfile.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-flatfile\admin-groups.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-flatfile\admin-overrides.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-flatfile\admin-simple.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-flatfile\admin-users.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-sql-prefetch.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\admin-sql-threaded.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\adminhelp.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\adminmenu.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\adminmenu\dynamicmenu.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\antiflood.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basebans.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basebans\ban.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basechat.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecomm.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands\cancelvote.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands\execcfg.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands\kick.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands\map.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands\reloadadmins.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecommands\who.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecomm\forwards.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecomm\gag.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basecomm\natives.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basetriggers.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basevotes.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basevotes\voteban.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basevotes\votekick.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\basevotes\votemap.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\clientprefs.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\beacon.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\blind.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\drug.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\fire.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\gravity.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\ice.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\noclip.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funcommands\timebomb.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funvotes.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funvotes\votealltalk.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funvotes\voteburn.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funvotes\voteff.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funvotes\votegravity.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\funvotes\voteslay.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\mapchooser.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\nextmap.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\nominations.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\playercommands.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\playercommands\rename.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\playercommands\slap.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\playercommands\slay.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\randomcycle.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\reservedslots.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\rockthevote.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\sounds.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\sql-admin-manager.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\benchmark.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\bug4059.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\callfunctest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\capstest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\clientprefstest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\cstrike-test.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\entpropelements.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\fakenative1.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\fakenative2.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\filetest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\fwdtest1.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\fwdtest2.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\gamerules-props.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\goto_test.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\keyvalues.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\outputtest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\ptstest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\sorttest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\sqltest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\stacktest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\structtest.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\tf2-test.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\addons\sourcemod\scripting\testsuite\tries.sp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\cfg\sourcemod\sm_warmode_off.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\cfg\sourcemod\sm_warmode_on.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="downloads\cfg\sourcemod\sourcemod.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,6 +460,2889 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="downloads\addons\sourcemod\data\" />
+    <Folder Include="downloads\addons\sourcemod\logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="downloads\addons\metamod\bin\metamod.1.ep1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.bgt.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.blade.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.bms.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.contagion.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.csgo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.css.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.darkm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.dods.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.dota.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.ep2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.eye.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.hl2dm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.insurgency.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.l4d.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.l4d2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.nd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.sdk2013.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.swarm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\metamod.2.tf2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\bin\server.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\metamod\README.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.1.ep1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.bgt.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.blade.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.bms.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.contagion.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.csgo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.css.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.darkm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.dods.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.ep2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.eye.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.hl2dm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.insurgency.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.l4d.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.l4d2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.nd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.sdk2013.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.swarm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.2.tf2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod.logic.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcemod_mm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\bin\sourcepawn.jit.x86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\adminmenu_cfgs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\adminmenu_custom.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\adminmenu_grouping.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\adminmenu_sorting.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\banreasons.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\sql-init-scripts\mysql\clientprefs-mysql.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\sql-init-scripts\mysql\create_admins.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\sql-init-scripts\mysql\update_admins_r1409.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\sql-init-scripts\sqlite\clientprefs-sqlite.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\sql-init-scripts\sqlite\create_admins.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\configs\sql-init-scripts\sqlite\update_admins-r1409.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\bintools.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\clientprefs.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\dbi.mysql.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\dbi.sqlite.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\game.cstrike.ext.2.csgo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\game.cstrike.ext.2.css.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\game.tf2.ext.2.tf2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\geoip.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\regex.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.1.ep1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.bgt.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.blade.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.bms.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.contagion.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.csgo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.css.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.darkm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.dods.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.ep2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.eye.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.hl2dm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.insurgency.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.l4d.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.l4d2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.nd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.sdk2013.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.swarm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdkhooks.ext.2.tf2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.1.ep1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.bgt.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.blade.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.bms.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.contagion.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.csgo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.css.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.darkm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.dods.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.ep2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.eye.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.hl2dm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.insurgency.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.l4d.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.l4d2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.nd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.sdk2013.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.swarm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\sdktools.ext.2.tf2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\topmenus.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\updater.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\extensions\webternet.ext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\blacklist.plugins.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\common.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.bgt.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.blade.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.bms.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.contagion.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.csgo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.css.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.darkm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.ep1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.ep2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.ep2valve.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.eye.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.insurgency.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.l4d.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.l4d2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.sdk2013.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\engine.swarm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\game.dinodday.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\core.games\master.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\funcommands.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\common.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.blade.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.contagion.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.csgo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.darkm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.ep2v.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.insurgency.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\engine.l4d.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.ag2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.alienswarm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.aoc.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.bms.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.cspromod.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.cstrike.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.dinodday.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.doi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.empires.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.ff.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.fof.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.gesource.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.hidden.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.hl2ctf.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.insurgency.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.kz.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.l4d2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.modularcombat.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.neotokyo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.nmrih.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.nucleardawn.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.pvkii.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.sgtls.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.sourceforts.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.synergy.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.zm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\game.zpanic.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdkhooks.games\master.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\common.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.bgt.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.blade.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.contagion.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.csgo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.css.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.darkm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.ep1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.ep2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.ep2valve.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.eye.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.insurgency.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.l4d.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.l4d2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.sdk2013.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\engine.swarm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.ag2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.alienswarm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.aoc.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.bg2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.bms.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.cspromod.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.cstrike.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.dinodday.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.dod.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.doi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.dystopia.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.empires.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.esmod.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.fas.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.ff.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.fof.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.gesource.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.hidden.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.hl2ctf.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.hl2mp.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.insurgency.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.ios.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.kz.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.left4dead2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.modularcombat.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.neotokyo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.nmrih.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.nucleardawn.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.obsidian.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.pvkii.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.rnlbeta.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.ship.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.sourceforts.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.synergy.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.tf.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.zm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\game.zpanic.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sdktools.games\master.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sm-cstrike.games\game.csgo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sm-cstrike.games\game.css.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sm-cstrike.games\master.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\gamedata\sm-tf2.games.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\GPLv2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\GPLv3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\compile.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\admin.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\adminmenu.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\adt.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\adt_array.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\adt_stack.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\adt_trie.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\banning.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\basecomm.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\bitbuffer.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\clientprefs.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\clients.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\commandfilters.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\commandline.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\console.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\convars.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\core.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\cstrike.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\datapack.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\dbi.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\entity.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\entity_prop_stocks.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\events.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\files.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\float.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\functions.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\geoip.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\halflife.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\handles.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\helpers.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\keyvalues.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\lang.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\logging.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\mapchooser.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\menus.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\nextmap.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\profiler.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\protobuf.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\regex.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdkhooks.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_client.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_engine.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_entinput.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_entoutput.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_functions.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_gamerules.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_hooks.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_sound.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_stocks.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_stringtables.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_tempents.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_tempents_stocks.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_trace.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sdktools_voice.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sorting.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\sourcemod.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\string.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\testing.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\textparse.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\tf2.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\tf2_stocks.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\timers.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\topmenus.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\usermessages.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\vector.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\version.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\include\version_auto.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\spcomp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\scripting\testsuite\sqltest.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ar\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\bg\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\chi\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\cze\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\da\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\de\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\el\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\es\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fi\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\fr\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\he\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\hu\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\it\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\jp\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ko\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lt\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\lv\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nl\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\no\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pl\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\pt_p\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ro\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ru\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sk\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\sv\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\th\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\slapslay.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\tr\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\ua\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\adminhelp.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\adminmenu.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\antiflood.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\basebans.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\basecomm.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\basetriggers.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\basevotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\clientprefs.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\common.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\core.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\funcommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\funvotes.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\mapchooser.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\nextmap.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\nominations.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\playercommands.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\plugin.basecommands.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\reservedslots.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\rockthevote.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\sounds.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="downloads\addons\sourcemod\translations\zho\sqladmins.phrases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
