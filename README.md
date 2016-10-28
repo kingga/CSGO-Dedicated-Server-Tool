@@ -1,5 +1,5 @@
 # CSGO-Dedicated-Server-Tool
-GUI based tool to help manage dedicated server owners for CS:GO
+GUI based tool to help manage dedicated server for CS:GO
 
 CS:GO SERVER GUI TOOL
 Features:
