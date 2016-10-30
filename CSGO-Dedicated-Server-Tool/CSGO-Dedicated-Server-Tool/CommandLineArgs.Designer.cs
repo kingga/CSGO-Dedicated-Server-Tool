@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandLineArgs));
             this.lblTickRate = new System.Windows.Forms.Label();
             this.lblPort = new System.Windows.Forms.Label();
             this.lblMaxPlayers = new System.Windows.Forms.Label();
@@ -318,6 +319,7 @@
             this.Controls.Add(this.lblMaxPlayers);
             this.Controls.Add(this.lblPort);
             this.Controls.Add(this.lblTickRate);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CommandLineArgs";
             this.Text = "Command Line Arguments";
             this.Load += new System.EventHandler(this.CommandLineArgs_Load);

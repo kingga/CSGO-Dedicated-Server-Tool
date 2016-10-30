@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnStartServer = new System.Windows.Forms.Button();
             this.btnStopServer = new System.Windows.Forms.Button();
             this.pnlBasicControls = new System.Windows.Forms.Panel();
@@ -46,12 +47,23 @@
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnBackupServer = new System.Windows.Forms.Button();
-            this.rtbConsole = new System.Windows.Forms.RichTextBox();
             this._refreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.pnlStatus = new System.Windows.Forms.Panel();
+            this.lblServerDirectory = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblServerName = new System.Windows.Forms.Label();
+            this.pnlServers = new System.Windows.Forms.Panel();
+            this.lbxServers = new System.Windows.Forms.ListBox();
+            this.tbxServerName = new System.Windows.Forms.TextBox();
+            this.lblCreateServerName = new System.Windows.Forms.Label();
+            this.btnAddServer = new System.Windows.Forms.Button();
+            this.btnRemoveServer = new System.Windows.Forms.Button();
             this.pnlBasicControls.SuspendLayout();
             this.pnlLogging.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlMisc.SuspendLayout();
+            this.pnlStatus.SuspendLayout();
+            this.pnlServers.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStartServer
@@ -228,36 +240,128 @@
             this.btnBackupServer.UseVisualStyleBackColor = true;
             this.btnBackupServer.Click += new System.EventHandler(this.btnBackupServer_Click);
             // 
-            // rtbConsole
-            // 
-            this.rtbConsole.Location = new System.Drawing.Point(179, 13);
-            this.rtbConsole.Name = "rtbConsole";
-            this.rtbConsole.Size = new System.Drawing.Size(611, 413);
-            this.rtbConsole.TabIndex = 6;
-            this.rtbConsole.Text = "";
-            // 
             // _refreshTimer
             // 
             this._refreshTimer.Enabled = true;
             this._refreshTimer.Interval = 5000;
             this._refreshTimer.Tick += new System.EventHandler(this._refreshTimer_Tick);
             // 
+            // pnlStatus
+            // 
+            this.pnlStatus.Controls.Add(this.lblServerDirectory);
+            this.pnlStatus.Controls.Add(this.lblStatus);
+            this.pnlStatus.Controls.Add(this.lblServerName);
+            this.pnlStatus.Location = new System.Drawing.Point(178, 13);
+            this.pnlStatus.Name = "pnlStatus";
+            this.pnlStatus.Size = new System.Drawing.Size(286, 85);
+            this.pnlStatus.TabIndex = 6;
+            // 
+            // lblServerDirectory
+            // 
+            this.lblServerDirectory.AutoSize = true;
+            this.lblServerDirectory.Location = new System.Drawing.Point(3, 32);
+            this.lblServerDirectory.Name = "lblServerDirectory";
+            this.lblServerDirectory.Size = new System.Drawing.Size(86, 13);
+            this.lblServerDirectory.TabIndex = 2;
+            this.lblServerDirectory.Text = "Server Directory:";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(3, 62);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(40, 13);
+            this.lblStatus.TabIndex = 1;
+            this.lblStatus.Text = "Status:";
+            // 
+            // lblServerName
+            // 
+            this.lblServerName.AutoSize = true;
+            this.lblServerName.Location = new System.Drawing.Point(3, 3);
+            this.lblServerName.Name = "lblServerName";
+            this.lblServerName.Size = new System.Drawing.Size(72, 13);
+            this.lblServerName.TabIndex = 0;
+            this.lblServerName.Text = "Server Name:";
+            // 
+            // pnlServers
+            // 
+            this.pnlServers.Controls.Add(this.btnRemoveServer);
+            this.pnlServers.Controls.Add(this.btnAddServer);
+            this.pnlServers.Controls.Add(this.lblCreateServerName);
+            this.pnlServers.Controls.Add(this.tbxServerName);
+            this.pnlServers.Controls.Add(this.lbxServers);
+            this.pnlServers.Location = new System.Drawing.Point(178, 105);
+            this.pnlServers.Name = "pnlServers";
+            this.pnlServers.Size = new System.Drawing.Size(286, 321);
+            this.pnlServers.TabIndex = 7;
+            // 
+            // lbxServers
+            // 
+            this.lbxServers.FormattingEnabled = true;
+            this.lbxServers.Location = new System.Drawing.Point(3, 3);
+            this.lbxServers.Name = "lbxServers";
+            this.lbxServers.Size = new System.Drawing.Size(280, 225);
+            this.lbxServers.TabIndex = 0;
+            this.lbxServers.SelectedIndexChanged += new System.EventHandler(this.lbxServers_SelectedIndexChanged);
+            // 
+            // tbxServerName
+            // 
+            this.tbxServerName.Location = new System.Drawing.Point(81, 236);
+            this.tbxServerName.Name = "tbxServerName";
+            this.tbxServerName.Size = new System.Drawing.Size(201, 20);
+            this.tbxServerName.TabIndex = 1;
+            // 
+            // lblCreateServerName
+            // 
+            this.lblCreateServerName.AutoSize = true;
+            this.lblCreateServerName.Location = new System.Drawing.Point(3, 239);
+            this.lblCreateServerName.Name = "lblCreateServerName";
+            this.lblCreateServerName.Size = new System.Drawing.Size(72, 13);
+            this.lblCreateServerName.TabIndex = 2;
+            this.lblCreateServerName.Text = "Server Name:";
+            // 
+            // btnAddServer
+            // 
+            this.btnAddServer.Location = new System.Drawing.Point(3, 263);
+            this.btnAddServer.Name = "btnAddServer";
+            this.btnAddServer.Size = new System.Drawing.Size(278, 23);
+            this.btnAddServer.TabIndex = 3;
+            this.btnAddServer.Text = "Add Server";
+            this.btnAddServer.UseVisualStyleBackColor = true;
+            this.btnAddServer.Click += new System.EventHandler(this.btnAddServer_Click);
+            // 
+            // btnRemoveServer
+            // 
+            this.btnRemoveServer.Location = new System.Drawing.Point(3, 293);
+            this.btnRemoveServer.Name = "btnRemoveServer";
+            this.btnRemoveServer.Size = new System.Drawing.Size(278, 23);
+            this.btnRemoveServer.TabIndex = 4;
+            this.btnRemoveServer.Text = "Remove Server";
+            this.btnRemoveServer.UseVisualStyleBackColor = true;
+            this.btnRemoveServer.Click += new System.EventHandler(this.btnRemoveServer_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 438);
-            this.Controls.Add(this.rtbConsole);
+            this.ClientSize = new System.Drawing.Size(476, 438);
+            this.Controls.Add(this.pnlServers);
+            this.Controls.Add(this.pnlStatus);
             this.Controls.Add(this.pnlMisc);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlLogging);
             this.Controls.Add(this.pnlBasicControls);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "CS:GO Dedicated Server Tool";
             this.pnlBasicControls.ResumeLayout(false);
             this.pnlLogging.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.pnlMisc.ResumeLayout(false);
+            this.pnlStatus.ResumeLayout(false);
+            this.pnlStatus.PerformLayout();
+            this.pnlServers.ResumeLayout(false);
+            this.pnlServers.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -281,8 +385,17 @@
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnBackupServer;
-        private System.Windows.Forms.RichTextBox rtbConsole;
         private System.Windows.Forms.Timer _refreshTimer;
+        private System.Windows.Forms.Panel pnlStatus;
+        private System.Windows.Forms.Label lblServerName;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblServerDirectory;
+        private System.Windows.Forms.Panel pnlServers;
+        private System.Windows.Forms.ListBox lbxServers;
+        private System.Windows.Forms.Label lblCreateServerName;
+        private System.Windows.Forms.TextBox tbxServerName;
+        private System.Windows.Forms.Button btnRemoveServer;
+        private System.Windows.Forms.Button btnAddServer;
     }
 }
 

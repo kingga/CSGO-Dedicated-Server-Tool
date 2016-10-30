@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.lblServerDirectory = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.tbxServerLocation = new System.Windows.Forms.TextBox();
             this.btnFindServerLocation = new System.Windows.Forms.Button();
+            this.lblServerName = new System.Windows.Forms.Label();
+            this.tbxServerName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblServerDirectory
@@ -45,7 +48,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(335, 39);
+            this.btnOK.Location = new System.Drawing.Point(335, 37);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 1;
@@ -70,15 +73,34 @@
             this.btnFindServerLocation.UseVisualStyleBackColor = true;
             this.btnFindServerLocation.Click += new System.EventHandler(this.btnFindServerLocation_Click);
             // 
+            // lblServerName
+            // 
+            this.lblServerName.AutoSize = true;
+            this.lblServerName.Location = new System.Drawing.Point(13, 42);
+            this.lblServerName.Name = "lblServerName";
+            this.lblServerName.Size = new System.Drawing.Size(72, 13);
+            this.lblServerName.TabIndex = 4;
+            this.lblServerName.Text = "Server Name:";
+            // 
+            // tbxServerName
+            // 
+            this.tbxServerName.Location = new System.Drawing.Point(106, 39);
+            this.tbxServerName.Name = "tbxServerName";
+            this.tbxServerName.Size = new System.Drawing.Size(223, 20);
+            this.tbxServerName.TabIndex = 5;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 72);
+            this.Controls.Add(this.tbxServerName);
+            this.Controls.Add(this.lblServerName);
             this.Controls.Add(this.btnFindServerLocation);
             this.Controls.Add(this.tbxServerLocation);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblServerDirectory);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
             this.Text = "Settings";
             this.ResumeLayout(false);
@@ -92,5 +114,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox tbxServerLocation;
         private System.Windows.Forms.Button btnFindServerLocation;
+        private System.Windows.Forms.Label lblServerName;
+        private System.Windows.Forms.TextBox tbxServerName;
     }
 }

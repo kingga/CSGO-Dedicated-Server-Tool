@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>csgosmt-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +56,8 @@
     <Compile Include="CommandLineArgs.Designer.cs">
       <DependentUpon>CommandLineArgs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Config.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +66,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -478,6 +484,7 @@
     <Folder Include="downloads\addons\sourcemod\logs\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="csgosmt-icon.ico" />
     <Content Include="downloads\addons\metamod\bin\metamod.1.ep1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
