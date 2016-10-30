@@ -8,10 +8,18 @@ Features:
 - Restart server (Completed)
 - Restart on crash (Completed)
 - Log on crash (Completed)
-- Chat log (Completed - BUG: if the user types status, ping, etc in the console it will display that information as well - http://pastebin.com/12itfqJU)
+- Chat log (I can't promise I will get this done very fast, the way the log is written makes a interesting)
 - Console log (Completed)
 - Import config files (Completed)
 - Install Metamod/Sourcemod (Completed)
 - Import plugins (activated by "Install Metamod/Sourcemod") (Completed)
 - Server backup (saves configs, maps, replays, plugins - these are selected by the user)
 - Set launch options (Completed)
+- Multi-server support (Completed)
+- Install a new server
+- Update a server
+- Auto-update a server
+
+-----------------------------------------------------------------------------------------------------------------------
+
+SCREENSHOT: http://imgur.com/a/aT1Qn
