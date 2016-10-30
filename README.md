@@ -21,5 +21,5 @@ Features:
 - Auto-update a server
 
 -----------------------------------------------------------------------------------------------------------------------
-
+NOTE: I just realised that multi-server support is not working completely. Currently it only lets you run one server at a time (I will work on this soon).
 SCREENSHOT: http://imgur.com/a/aT1Qn
