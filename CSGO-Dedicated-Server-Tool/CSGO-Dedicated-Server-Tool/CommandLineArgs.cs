@@ -123,7 +123,7 @@ namespace CSGO_Dedicated_Server_Tool
             }
 
             // Save to config file (config_args.cfg)
-            using (StreamWriter _sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\configs\config_args.cfg", false))
+            using (StreamWriter _sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\configs\config_args" + Global._SERVER_NAME + ".cfg", false))
             {
                 foreach (string _arg in _cmdArgs)
                 {
@@ -141,9 +141,23 @@ namespace CSGO_Dedicated_Server_Tool
             Hide();
         }
 
-        private void CommandLineArgs_Load(object sender, EventArgs e)
+        public void ClearAndShow()
         {
-            // Set Values
+            this.Show();
+
+            tbxIP.Clear();
+            tbxPort.Clear();
+            cmbTickRate.SelectedValue = null;
+            cmbGameMode.SelectedValue = null;
+            tbxMap.Clear();
+            numMaxPlayers.Value = 0;
+            tbxSteamAccount.Clear();
+            tbxWorkshopStartMap.Clear();
+            tbxWorkshopCollection.Clear();
+            tbxAuthKey.Clear();
+            tbxCustom.Clear();
+
+            // Set textboxes
             foreach (string _arg in _cmdArgs)
             {
                 string[] _temp = _arg.Split(' ');
@@ -181,6 +195,12 @@ namespace CSGO_Dedicated_Server_Tool
                 else if (_temp[0] == "-authkey")
                     tbxAuthKey.Text = _temp[1];
             }
+        }
+
+        private void CommandLineArgs_Load(object sender, EventArgs e)
+        {
+            // Init textboxes
+            ClearAndShow();
         }
     }
 }

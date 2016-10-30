@@ -1,230 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CSGO_Dedicated_Server_Tool
 {
     public partial class MainForm : Form
     {
-        bool _isProcNotRunningAllowed = true;           // This is used to see if the program crashed or if it was shut down manually
-        Process _proc = null;                           // SRCDS Process
-        List<string> _procArgs = new List<string>();    // SRCDS Arguments
-        string[] _defaultProcArgs = { "-game csgo", "-console", "-condebug", "-usercon", "+net_port_trt 1", "+exec server.cfg" };
-
-        string _filename = "srcds.exe";
-
-        // Directories
-        public string _SERVER_INSTALL_DIR = "";
-        public string _SERVER_LOG_DIR = "";
-        public string _SERVER_CRASH_LOG_DIR = "";
-        public string _SERVER_SAVED_LOG_DIR = "";
-
-        // Version
-        public string _APPLICATION_VERSION = "1.0";
-
-        // Forms
-        CommandLineArgs cmdLineForm;
-        Settings _settingsForm;
-
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent();   
 
-            _procArgs.AddRange(_defaultProcArgs);
+            // Init Config Class
+            Global._cfg = new Config();
 
-            // Init Forms
-            _settingsForm = new Settings();
-            _settingsForm.ControlBox = false;
+            Global._procArgs.AddRange(Global._defaultProcArgs);
 
-            cmdLineForm = new CommandLineArgs();
-            cmdLineForm.ControlBox = false;
+            // Init Command Line Form
+            Global.cmdLineForm = new CommandLineArgs();
+            Global.cmdLineForm.ControlBox = false;
 
-            // Read the Command Line Args config
-            using (StreamReader _sr = new StreamReader(Directory.GetCurrentDirectory() + @"\configs\config_args.cfg"))
+            Global._cfg.ReadArgConfig();
+
+            Global._procArgs.AddRange(Global.cmdLineForm.GetCommandLineArgs());
+
+            Global._cfg.ReadDefaultConfig();
+
+            lbxServers.Items.AddRange(Global._SERVER_LIST.ToArray());
+
+            // Check if there are any servers otherwise prompt the user to create one
+            if (lbxServers.Items.Count == 0)
             {
-                string _line;
-                List<string> _tempArgs = new List<string>();
-
-                while ((_line = _sr.ReadLine()) != null)
+                bool _success = Server.CreateServer();
+                if (_success)
                 {
-                    _tempArgs.Add(_line);
-                }
-
-                cmdLineForm.SetCommandLineArgs(_tempArgs);
-            }
-
-            _procArgs.AddRange(cmdLineForm.GetCommandLineArgs());
-
-            using (StreamReader _sr = new StreamReader(Directory.GetCurrentDirectory() + @"\configs\config.cfg"))
-            {
-                string _line;
-                string[] _lineTemp;
-
-                while ((_line = _sr.ReadLine()) != null)
-                {
-                    _lineTemp = _line.Split('=');
-
+                    lbxServers.Items.Clear();
                     
-
-                    if (_lineTemp[0] == "INSTALL_DIR")
-                        _SERVER_INSTALL_DIR = _lineTemp[1];
+                    // Populate the server listbox
+                    lbxServers.Items.AddRange(Global._SERVER_LIST.ToArray());
                 }
             }
 
-            _SERVER_LOG_DIR = _SERVER_INSTALL_DIR + @"\Logs\";
-            _SERVER_CRASH_LOG_DIR = _SERVER_INSTALL_DIR + @"\Logs\CrashLogs\";Thi
-            _SERVER_SAVED_LOG_DIR = _SERVER_INSTALL_DIR + @"\Logs\Saved\";
+            // Init Setting Form
+            Global._settingsForm = new Settings();
+            Global._settingsForm.ControlBox = false;
+
+            Global._SERVER_LOG_DIR = Global._SERVER_INSTALL_DIR + @"\Logs\";
+            Global._SERVER_CRASH_LOG_DIR = Global._SERVER_INSTALL_DIR + @"\Logs\CrashLogs\";
+            Global._SERVER_SAVED_LOG_DIR = Global._SERVER_INSTALL_DIR + @"\Logs\Saved\";
+
+            // Init Status Labels
+            lblServerName.Text = "Server Name: " + Global._SERVER_NAME;
+            lblServerDirectory.Text = "Server Directory: " + Global._SERVER_INSTALL_DIR;
+            lblStatus.ForeColor = System.Drawing.Color.Red;
+            lblStatus.Text = "Status: Stopped";
     }
-
-        // serverName will be enough to link to the x_server.exe (srcds) file where x is the value of serverName
-        private void StartServer(string _serverName, List<string> _procStartArgs)
-        {
-            // Set the server install dir
-            if (_settingsForm._SERVER_INSTALL_DIR != "")
-                _SERVER_INSTALL_DIR = _settingsForm._SERVER_INSTALL_DIR;
-
-            // Turn the _procStartArgs into a single string
-            StringBuilder _strBuilder = new StringBuilder();
-            string _procArgsStr = "";
-            _strBuilder.Append("start \"\" " + _serverName);
-
-            // Refresh Arguments
-            _procStartArgs.Clear();
-            _procStartArgs.AddRange(_defaultProcArgs);
-            _procStartArgs.AddRange(cmdLineForm.GetCommandLineArgs());
-
-            // Loop through each item in the list and append it to the string
-            foreach (string _arg in _procStartArgs)
-            {
-                _strBuilder.Append(" " + _arg);
-            }
-
-            _procArgsStr = _strBuilder.ToString();
-
-            Console.WriteLine("PROCESS ARGUMENT LINE: " + _procArgsStr);
-
-            try
-            {
-                if (_procArgsStr != "") // Make sure there are some available arguments to parse through
-                {
-                    string _batchDir = _SERVER_INSTALL_DIR;
-                    _proc = new Process();
-                    _proc.StartInfo.WorkingDirectory = _batchDir;
-                    _proc.StartInfo.FileName = _serverName /*+ "_server.exe"*/;
-                    _proc.StartInfo.Arguments = _procArgsStr;
-                    _proc.StartInfo.CreateNoWindow = false;
-                    _proc.Start();
-
-                    _isProcNotRunningAllowed = false; // If the process crashes it will be restarted
-
-                    // Enable buttons
-                    btnStopServer.Enabled = true;
-                    btnRestartServer.Enabled = true;
-                }
-                else
-                {
-                    Console.WriteLine("Arguments are empty!");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
-                MessageBox.Show("Exception Occurred: " + ex.Message, "Start Server Error!");
-            }
-        }
-
-        private void TerminateServer()
-        {
-            // Copy log to 'Logs' directory with a unique name (date/time)
-            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"\csgo\", "console.log");
-            string _destFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
-            string _destChatFile = Path.Combine(_SERVER_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
-
-            try
-            {
-                try
-                {
-                    // Terminate the process
-                    _proc.CloseMainWindow();
-                    _proc.Close(); // Free memory
-                    _proc = null; // Null _proc so it can be restarted
-
-                    _isProcNotRunningAllowed = true;
-
-                    // Disbale butons
-                    btnStopServer.Enabled = false;
-                    btnRestartServer.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
-                    MessageBox.Show("Exception Occurred: " + ex.Message, "Close Server Error!");
-
-                    // Disable buttons
-                    btnStopServer.Enabled = false;
-                    btnRestartServer.Enabled = false;
-                }
-
-                // Check if the destination folder already exist else create it
-                if (!Directory.Exists(_SERVER_LOG_DIR))
-                {
-                    Directory.CreateDirectory(_SERVER_LOG_DIR);
-                }
-
-                // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
-                File.Copy(_sourceFile, _destFile, true);
-
-                // Write the chat log
-                // Read from console.log
-                string[] _lines = File.ReadAllLines(_sourceFile);
-
-                // Write each line that has " : " to a chat log
-                using (StreamWriter _sw = new StreamWriter(_destChatFile))
-                {
-                    foreach (string _line in _lines)
-                    {
-                        if (_line.Contains(" : "))
-                        {
-                            _sw.WriteLine(_line);
-                        }
-                    }
-
-                    _sw.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
-                DialogResult _dialogResult = MessageBox.Show("The log file has failed to copy!\nWould you like to continue anyway?", "IO Error!", MessageBoxButtons.YesNo);
-                if (_dialogResult == DialogResult.Yes)
-                {
-                    // Do Nothing
-                }
-                else if (_dialogResult == DialogResult.No)
-                {
-                    return; // Break out of the function
-                }
-            }
-        }
-
-        private void RestartServer(string _serverName)
-        {
-            // Terminate Server
-            TerminateServer();
-
-            // Check if 'serverName' is closed
-            // Start the server
-            if (_proc == null)
-                StartServer(_serverName, _procArgs);
-        }
+        
 
         // Copy whole directories with content
         private bool CopyDirectory(string _strSource, string _strDestination)
@@ -262,14 +94,39 @@ namespace CSGO_Dedicated_Server_Tool
             // TRUE
             // PROMT - "SERVER ALREADY RUNNING!\nWould you like to restart the server?", YES/NO
 
-            if (_proc == null)
-                StartServer(_filename, _procArgs);
+            if (Global._proc == null)
+            {
+                bool _success = Server.StartServer(Global._SERVER_LIST.ElementAt(Global._CURRENT_SERVER_INDEX), Global._procArgs);
+                if (_success)
+                {
+                    // Set the status label
+                    lblStatus.ForeColor = System.Drawing.Color.Green;
+                    lblStatus.Text = "Status: Running";
+
+                    // Enable buttons
+                    btnStopServer.Enabled = true;
+                    btnRestartServer.Enabled = true;
+                }
+            }    
             else
             {
                 DialogResult _dialogResult = MessageBox.Show("The server is already running!\nWould you like to restart the server?", "Start Server", MessageBoxButtons.YesNo);
 
                 if (_dialogResult == DialogResult.Yes)
-                    RestartServer(_filename);
+                {
+                    bool _success = Server.RestartServer(Global._SERVER_NAME);
+                    if (_success)
+                    {
+                        // Set the status label
+                        lblStatus.ForeColor = System.Drawing.Color.Green;
+                        lblStatus.Text = "Status: Running";
+
+                        // Enable buttons
+                        btnStopServer.Enabled = false;
+                        btnRestartServer.Enabled = false;
+                    }
+                }
+                    
                 else if (_dialogResult == DialogResult.No)
                     return; // Break from the function
             }
@@ -285,10 +142,33 @@ namespace CSGO_Dedicated_Server_Tool
             // FALSE
             // PROMT - "THE SERVER IS CURRENTLY NOT RUNNING!\nIf the server is running and this program fails to detect it please close the server manually.", OK
 
-            if (!(_proc.HasExited) && _proc != null)
-                TerminateServer();
+            if (!(Global._proc.HasExited) && Global._proc != null)
+            {
+                bool _success = Server.TerminateServer();
+                if (_success)
+                {
+                    // Set the status label
+                    lblStatus.ForeColor = System.Drawing.Color.Red;
+                    lblStatus.Text = "Status: Stopped";
+
+                    // Enable buttons
+                    btnStopServer.Enabled = false;
+                    btnRestartServer.Enabled = false;
+                }
+            }
+                
             else
+            {
                 MessageBox.Show("The server is currently not running!\nIf the server is running and this program fails to detect it please close the server manually.", "Close Server", MessageBoxButtons.OK);
+
+                // Set the status label
+                lblStatus.ForeColor = System.Drawing.Color.Red;
+                lblStatus.Text = "Status: Stopped";
+
+                btnStopServer.Enabled = false;
+                btnStopServer.Enabled = false;
+            }
+                
         }
 
         private void btnRestartServer_Click(object sender, EventArgs e)
@@ -301,31 +181,39 @@ namespace CSGO_Dedicated_Server_Tool
             // FALSE
             // PROMT - "THE SERVER IS CURRENTLY NOT RUNNING!\nIf the server is running and this program fails to detect it please close the server manually.", OK
 
-            if (_proc != null)
-                RestartServer(_filename);
+            if (Global._proc != null)
+            {
+                bool _success = Server.RestartServer(Global._SERVER_NAME);
+                if (_success)
+                {
+                    // Enable buttons
+                    btnStopServer.Enabled = true;
+                    btnRestartServer.Enabled = true;
+                }
+            }
         }
 
         private void btnLaunchOptions_Click(object sender, EventArgs e)
         {
             // Open a new form that gives a textbox where the user may enter their arguments
             // Supply a list of commonly used arguments below
-            cmdLineForm.Show();
+            Global.cmdLineForm.ClearAndShow();
         }
 
         private void btnLogConsole_Click(object sender, EventArgs e)
         {
             // Copy the current session log and paste it in the 'Logs\Saved' folder with a unique name (date/time)
             // Copy log to 'Logs' directory with a unique name (date/time)
-            string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"\csgo\", "console.log");
-            string _destFile = Path.Combine(_SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
-            string _destChatFile = Path.Combine(_SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
+            string _sourceFile = Path.Combine(Global._SERVER_INSTALL_DIR + @"\csgo\", "console.log");
+            string _destFile = Path.Combine(Global._SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
+            string _destChatFile = Path.Combine(Global._SERVER_SAVED_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
 
             try
             {
                 // Check if the destination folder already exist else create it
-                if (!Directory.Exists(_SERVER_SAVED_LOG_DIR))
+                if (!Directory.Exists(Global._SERVER_SAVED_LOG_DIR))
                 {
-                    Directory.CreateDirectory(_SERVER_SAVED_LOG_DIR);
+                    Directory.CreateDirectory(Global._SERVER_SAVED_LOG_DIR);
                 }
 
                 // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
@@ -352,14 +240,17 @@ namespace CSGO_Dedicated_Server_Tool
             catch (Exception ex)
             {
                 Console.WriteLine("Exception Occurred: {0},{1}", ex.Message, ex.StackTrace.ToString());
-                MessageBox.Show("The log file has failed to copy!", "IO Error!");
+                if (ex.Message.Contains("used by another process"))
+                    MessageBox.Show("The log file has failed to copy!\nMake sure to close the server before you save the log!", "IO Error!");
+                else
+                    MessageBox.Show("The log file has failed to copy!\nMessage: " + ex.Message, "Error");
             }
         }
 
         private void btnViewConsoleLog_Click(object sender, EventArgs e)
         {
             // VIEW CONSOLE LOG WILL SHOW THE LOG DIRECTORY
-            string _folder = _SERVER_LOG_DIR;
+            string _folder = Global._SERVER_LOG_DIR;
             string _file = "*-console.log";
             string _uri = "search:query=" + _file + "&crumb=location:" + _folder;
             Process.Start(new ProcessStartInfo(_uri));
@@ -368,7 +259,7 @@ namespace CSGO_Dedicated_Server_Tool
         private void btnViewChatLog_Click(object sender, EventArgs e)
         {
             // VIEW CHAT LOG WILL SHOW THE LOG DIRECTORY
-            string _folder = _SERVER_LOG_DIR;
+            string _folder = Global._SERVER_LOG_DIR;
             string _file = "*-chat.log";
             string _uri = "search:query=" + _file + "&crumb=location:" + _folder;
             Process.Start(new ProcessStartInfo(_uri));
@@ -381,14 +272,14 @@ namespace CSGO_Dedicated_Server_Tool
             if (_fileDialog.ShowDialog() == DialogResult.OK)
             {
                 string _sourceFile = Path.Combine(_fileDialog.FileName);
-                string _destFile = _SERVER_INSTALL_DIR + @"\csgo\cfg\" + _fileDialog.SafeFileName;
+                string _destFile = Global._SERVER_INSTALL_DIR + @"\csgo\cfg\" + _fileDialog.SafeFileName;
 
                 try
                 {
                     // Check if the destination folder already exist else create it
-                    if (!Directory.Exists(_SERVER_INSTALL_DIR + @"\csgo\cfg\"))
+                    if (!Directory.Exists(Global._SERVER_INSTALL_DIR + @"\csgo\cfg\"))
                     {
-                        Directory.CreateDirectory(_SERVER_INSTALL_DIR + @"\csgo\cfg\");
+                        Directory.CreateDirectory(Global._SERVER_INSTALL_DIR + @"\csgo\cfg\");
                     }
 
                     // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
@@ -411,9 +302,9 @@ namespace CSGO_Dedicated_Server_Tool
         {
             // Install Metamod
             string _sourcePath = Directory.GetCurrentDirectory() + @"\downloads\";
-            string _installPath = _SERVER_INSTALL_DIR + @"\csgo\";
+            string _installPath = Global._SERVER_INSTALL_DIR + @"\csgo\";
 
-            if (!Directory.Exists(_SERVER_INSTALL_DIR + @"\csgo\addons\"))
+            if (!Directory.Exists(Global._SERVER_INSTALL_DIR + @"\csgo\addons\"))
             {
                 bool _copied = CopyDirectory(_sourcePath, _installPath);
 
@@ -434,14 +325,14 @@ namespace CSGO_Dedicated_Server_Tool
             if (_fileDialog.ShowDialog() == DialogResult.OK)
             {
                 string _sourceFile = Path.Combine(_fileDialog.FileName);
-                string _destFile = _SERVER_INSTALL_DIR + @"\csgo\addons\sourcemod\plugins\" + _fileDialog.SafeFileName;
+                string _destFile = Global._SERVER_INSTALL_DIR + @"\csgo\addons\sourcemod\plugins\" + _fileDialog.SafeFileName;
 
                 try
                 {
                     // Check if the destination folder already exist else create it
-                    if (!Directory.Exists(_SERVER_INSTALL_DIR + @"\csgo\addons\sourcemod\plugins\"))
+                    if (!Directory.Exists(Global._SERVER_INSTALL_DIR + @"\csgo\addons\sourcemod\plugins\"))
                     {
-                        Directory.CreateDirectory(_SERVER_INSTALL_DIR + @"\csgo\addons\sourcemod\plugins\");
+                        Directory.CreateDirectory(Global._SERVER_INSTALL_DIR + @"\csgo\addons\sourcemod\plugins\");
                     }
 
                     // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
@@ -467,36 +358,43 @@ namespace CSGO_Dedicated_Server_Tool
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            _settingsForm.Show();
+            // Update textboxes
+            Global._settingsForm.UpdateTextBoxes(Global._SERVER_INSTALL_DIR, Global._SERVER_NAME);
+
+            Global._settingsForm.Show();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Author: Isaac Skelton (/id/Kingga)\nDescription: A tool that helps with running a dedicated server.\nVersion: " + _APPLICATION_VERSION, "About", MessageBoxButtons.OK);
+            MessageBox.Show("Author: Isaac Skelton (/id/Kingga)\nDescription: A tool that helps with running a dedicated server.\nVersion: " + Global._APPLICATION_VERSION, "About", MessageBoxButtons.OK);
         }
 
-        // Used to check if the server crashed
+        // Used to check if the server crashed also to update some labels (Main Loopish) - I lied, this isn't a button press
         private void _refreshTimer_Tick(object sender, EventArgs e)
         {
             // Start server on crash
-            if (_isProcNotRunningAllowed == false)
+            if (Global._isProcNotRunningAllowed == false)
             {
-                if (_proc.HasExited)
+                if (Global._proc.HasExited)
                 {
                     // Log crash and restart the server
                     // Copy log to 'Logs' directory with a unique name (date/time)
-                    string _sourceFile = Path.Combine(_SERVER_INSTALL_DIR + @"\csgo\", "console.log");
-                    string _destFolder = Path.Combine(_SERVER_CRASH_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss"));
+                    string _sourceFile = Path.Combine(Global._SERVER_INSTALL_DIR + @"\csgo\", "console.log");
+                    string _destFolder = Path.Combine(Global._SERVER_CRASH_LOG_DIR, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss"));
                     string _destFile = Path.Combine(_destFolder, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-console.log");
                     string _crashInfoFile = Path.Combine(_destFolder, "CrashInfo.txt");
                     string _destChatFile = Path.Combine(_destFolder, DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss") + "-chat.log");
 
+                    // Set the status label
+                    lblStatus.ForeColor = System.Drawing.Color.Red;
+                    lblStatus.Text = "Status: Stopped";
+
                     try
                     {
                         // Check if the destination folder already exist else create it
-                        if (!Directory.Exists(_SERVER_CRASH_LOG_DIR))
+                        if (!Directory.Exists(Global._SERVER_CRASH_LOG_DIR))
                         {
-                            Directory.CreateDirectory(_SERVER_CRASH_LOG_DIR);
+                            Directory.CreateDirectory(Global._SERVER_CRASH_LOG_DIR);
                         }
 
                         // Copy the log to the folder (NOTE: This will overwrite any previous version with the same name)
@@ -538,9 +436,92 @@ namespace CSGO_Dedicated_Server_Tool
                         MessageBox.Show("The log file has failed to copy!", "IO Error!");
                     }
 
-                    StartServer(_filename, _procArgs);
+                    bool _success = Server.StartServer(Global._SERVER_LIST.ElementAt(Global._CURRENT_SERVER_INDEX), Global._procArgs);
+                    if (_success)
+                    {
+                        // Enable buttons
+                        btnStopServer.Enabled = true;
+                        btnRestartServer.Enabled = true;
+                    }
+                }
+                else
+                {
+                    // Set the status label
+                    lblStatus.ForeColor = System.Drawing.Color.Green;
+                    lblStatus.Text = "Status: Running";
                 }   
-            }  
+            }
+
+            // Set labels
+            lblServerName.Text = "Server Name: " + Global._SERVER_NAME;
+            lblServerDirectory.Text = "Server Directory: " + Global._SERVER_INSTALL_DIR;
+
+            // Refresh the arg list
+            Global._cfg.ReadArgConfig();
+        }
+
+        private void lbxServers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Global._CURRENT_SERVER_INDEX = lbxServers.SelectedIndex;
+
+            try // Sometimes it selects index -1
+            {
+                using (StreamReader _sr = new StreamReader(Directory.GetCurrentDirectory() + @"\configs\config_" + lbxServers.SelectedItem + ".cfg"))
+                {
+                    string _line;
+                    string[] _lineTemp;
+
+                    while ((_line = _sr.ReadLine()) != null)
+                    {
+                        _lineTemp = _line.Split('=');
+
+                        if (_lineTemp[0] == "SERVER_DIR")
+                            Global._SERVER_INSTALL_DIR = _lineTemp[1];
+                        if (_lineTemp[0] == "SERVER_NAME")
+                            Global._SERVER_NAME = _lineTemp[1];
+                    }
+
+                    _sr.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Message: " + ex.Message);
+            }
+            
+
+            // Set labels
+            lblServerName.Text = "Server Name: " + Global._SERVER_NAME;
+            lblServerDirectory.Text = "Server Directory: " + Global._SERVER_INSTALL_DIR;
+
+            // Refresh the arg list
+            Global._cfg.ReadArgConfig();
+        }
+
+        private void btnAddServer_Click(object sender, EventArgs e)
+        {
+            // Safe to config
+            // Add to listbox
+            // Select in listbox
+
+            bool _success = Server.CreateServer();
+
+            lbxServers.Items.Clear();
+            lbxServers.Items.AddRange(Global._SERVER_LIST.ToArray());
+
+            if (_success)
+            {
+                lbxServers.Refresh();
+                lbxServers.SelectedIndex = Global._CURRENT_SERVER_INDEX;
+            }
+
+            // Refresh the start up args
+            Global._cfg.ReadArgConfig();
+        }
+
+        private void btnRemoveServer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

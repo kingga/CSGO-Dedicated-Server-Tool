@@ -1,64 +1,88 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CSGO_Dedicated_Server_Tool
 {
     public partial class Settings : Form
     {
-        public string _SERVER_INSTALL_DIR = "";
-
         public Settings()
         {
             InitializeComponent();
 
-            using (StreamReader _sr = new StreamReader(Directory.GetCurrentDirectory() + @"\configs\config.cfg"))
+            tbxServerLocation.Text = Global._SERVER_INSTALL_DIR;
+            try
             {
-                string _line;
-                string[] _lineTemp;
-
-                while ((_line = _sr.ReadLine()) != null)
-                {
-                    _lineTemp = _line.Split('=');
-
-
-
-                    if (_lineTemp[0] == "INSTALL_DIR")
-                        _SERVER_INSTALL_DIR = _lineTemp[1];
-                }
+                tbxServerName.Text = Global._SERVER_LIST[Global._CURRENT_SERVER_INDEX];
             }
-
-            tbxServerLocation.Text = _SERVER_INSTALL_DIR;
+            catch (Exception)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnFindServerLocation_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog _folderDialog = new FolderBrowserDialog();
+            OpenFileDialog _fileDialog = new OpenFileDialog();
 
-            if (_folderDialog.ShowDialog() == DialogResult.OK)
+            if (_fileDialog.ShowDialog() == DialogResult.OK)
             {
-                tbxServerLocation.Text = _folderDialog.SelectedPath;
-                _SERVER_INSTALL_DIR = _folderDialog.SelectedPath;
+                string _dir = _fileDialog.FileName.Replace(_fileDialog.SafeFileName, "");
+                MessageBox.Show(_dir);
+                tbxServerLocation.Text = _dir;
+
+                tbxServerName.Text = _fileDialog.SafeFileName;
             }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _SERVER_INSTALL_DIR = tbxServerLocation.Text;
-
-            using (StreamWriter _sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\configs\config.cfg", false))
+            try
             {
-                _sw.WriteLine("INSTALL_DIR=" + _SERVER_INSTALL_DIR);
+                Global._SERVER_INSTALL_DIR = tbxServerLocation.Text;
+                Global._SERVER_NAME = tbxServerName.Text;
+
+                try
+                {
+                    Global._SERVER_LIST[Global._CURRENT_SERVER_INDEX] = tbxServerName.Text;
+                }
+                catch (Exception)
+                {
+                    Application.Exit();
+                }
+                
+
+                // Read from config.cfg -> redirect to config_servername.cfg
+                using (StreamWriter _sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\configs\config.cfg", true))
+                {
+                    _sw.WriteLine("SERVER_NAME=" + Global._SERVER_LIST[Global._CURRENT_SERVER_INDEX]);
+
+                    _sw.Close();
+                }
+
+                using (StreamWriter _sw = new StreamWriter(Directory.GetCurrentDirectory() + @"\configs\config_" + Global._SERVER_NAME + ".cfg", false))
+                {
+                    _sw.WriteLine("SERVER_NAME=" + Global._SERVER_LIST[Global._CURRENT_SERVER_INDEX]);
+                    _sw.WriteLine("SERVER_DIR=" + Global._SERVER_INSTALL_DIR);
+
+                    _sw.Close();
+                }
+
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Message: " + ex.Message, "Error");
             }
 
-            this.Hide();
+            
+        }
+
+        public void UpdateTextBoxes(string _dir, string _serverName)
+        {
+            tbxServerLocation.Text = _dir;
+            tbxServerName.Text = _serverName;
         }
     }
 }
